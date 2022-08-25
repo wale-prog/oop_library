@@ -1,11 +1,12 @@
 # frozen_string_literal: true
 
-# Person class is super for both teacher and student classes
-require './nameable.rb'
+require './nameable'
 require './decorator'
 
+# Person class is super for both teacher and student classes
 class Person < Nameable
   def initialize(age, name = 'Unknown', parent_permission: true)
+    super()
     @id = Random.rand(1..1000)
     @name = name
     @age = age
@@ -18,7 +19,7 @@ class Person < Nameable
   def correct_name
     @name
   end
-  
+
   def of_age?
     @age >= 18
   end
@@ -32,7 +33,6 @@ class Person < Nameable
     end
   end
 end
-
 
 # TO TEST ALL CLASSES IN ONE FILE
 # class TrimmerDecorator < Decorator
