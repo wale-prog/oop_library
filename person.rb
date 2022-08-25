@@ -1,8 +1,12 @@
 # frozen_string_literal: true
 
+require './nameable'
+require './decorator'
+
 # Person class is super for both teacher and student classes
-class Person
+class Person < Nameable
   def initialize(age, name = 'Unknown', parent_permission: true)
+    super()
     @id = Random.rand(1..1000)
     @name = name
     @age = age
@@ -11,6 +15,10 @@ class Person
 
   attr_reader :id
   attr_accessor :age, :name
+
+  def correct_name
+    @name
+  end
 
   def of_age?
     @age >= 18
@@ -25,3 +33,22 @@ class Person
     end
   end
 end
+
+# TO TEST ALL CLASSES IN ONE FILE
+# class TrimmerDecorator < Decorator
+#   def correct_name
+#     @nameable.correct_name.slice(0..9)
+#   end
+# end
+
+# class CapitalizeDecorator < Decorator
+#   def correct_name
+#     @nameable.correct_name.capitalize
+#   end
+# end
+
+# person = Person.new(22, 'maximilianus')
+# capitalizedPerson = CapitalizeDecorator.new(person)
+# p capitalizedPerson.correct_name
+# trimmer = TrimmerDecorator.new(capitalizedPerson)
+# p trimmer.correct_name
