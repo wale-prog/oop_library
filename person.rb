@@ -14,6 +14,10 @@ class Person < Nameable
     @rentals = []
   end
 
+  def add_rental(book, date)
+    Rental.new(date, self, book)
+  end
+
   attr_reader :id
   attr_accessor :age, :name
 
