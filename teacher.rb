@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require './person'
+require_relative './person'
 # Teacher class create the teachers object
 class Teacher < Person
   def initialize(specialization, age, name = 'Unknown')

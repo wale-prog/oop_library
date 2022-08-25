@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require './nameable'
+require_relative './nameable'
 
 # Implement the class decorator class
 class Decorator < Nameable

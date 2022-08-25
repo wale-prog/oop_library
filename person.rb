@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require './nameable'
-require './decorator'
+require_relative './nameable'
+require_relative './decorator'
 
 # Person class is super for both teacher and student classes
 class Person < Nameable
@@ -11,6 +11,11 @@ class Person < Nameable
     @name = name
     @age = age
     @parent_permission = parent_permission
+    @rentals = []
+  end
+
+  def add_rental(book, date)
+    Rental.new(date, self, book)
   end
 
   attr_reader :id
