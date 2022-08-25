@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Create the Book class
 class Book
   attr_accessor :title, :author
   attr_reader :rentals

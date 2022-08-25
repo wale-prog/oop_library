@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Creates the rental object
 class Rental
   attr_accessor :date
   attr_reader :person, :book

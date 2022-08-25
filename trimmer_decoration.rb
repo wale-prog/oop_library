@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require './decorator'
+require_relative './decorator'
 # Implement the Trimmer decorator class
 class TrimmerDecorator < Decorator
   def correct_name

@@ -19,8 +19,7 @@ class Student < Person
     @classroom = classroom
     @classroom.students.push(self) unless classroom.students.include?(self)
   end
-
 end
 
 john = Student.new('Physics', 20, 'John')
-p john.add_classroom()
+p john.add_classroom

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require './nameable'
-require './decorator'
+require_relative './nameable'
+require_relative './decorator'
 
 # Person class is super for both teacher and student classes
 class Person < Nameable

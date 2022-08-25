@@ -1,4 +1,7 @@
-class classroom
+# frozen_string_literal: true
+
+# Creates the classroom object
+class Classroom
   attr_accessor :label
 
   def initialize(label)

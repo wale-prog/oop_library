@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require './decorator'
+require_relative './decorator'
 
 # Implement the capitalize decorator class
 class CapitalizeDecorator < Decorator
