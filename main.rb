@@ -123,3 +123,6 @@ def list_rentals
   end
 end
 main
+# rubocop:enable Metrics/MethodLength
+# rubocop:enable Metrics/AbcSize
+# rubocop:enable Metrics/CyclomaticComplexity
