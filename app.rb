@@ -1,11 +1,15 @@
+# frozen_string_literal: true
+
 require_relative './book'
 require_relative './student'
 require_relative './teacher'
 require_relative './rental'
 require_relative './person'
 
+# App class contains all the methods use by the interface
 class App
   attr_reader :books, :people
+
   def initialize
     @students = []
     @teachers = []
@@ -23,7 +27,7 @@ class App
   end
 
   def display_people
-    @people.map do |person, index|
+    @people.map do |person, _index|
       role = person.is_a?(Student) ? 'Student' : 'Teacher'
       puts " [#{role}] Name: #{person.name}, ID: #{person.id}, Age #{person.age}"
     end
@@ -32,9 +36,9 @@ class App
   def create_people(role, age, name, parent_permission, specialization)
     case role
     when 'student'
-     student = Student.new(age, name, parent_permission)
-     @students.push(student)
-     @people.push(student)
+      student = Student.new(age, name, parent_permission)
+      @students.push(student)
+      @people.push(student)
 
     when 'teacher'
       teacher = Teacher.new(age, name, nil, specialization)
@@ -48,23 +52,23 @@ class App
     @books.push(new_book)
   end
 
-  def get_people
+  def list_people
     @people.map.with_index do |person, index|
       role = person.is_a?(Student) ? 'Student' : 'Teacher'
       puts "#{index}) [#{role}] Name: #{person.name}, ID: #{person.id}, Age #{person.age}"
     end
   end
 
-  def create_rental (date, person, book)
+  def create_rental(date, person, book)
     rental = Rental.new(date, person, book)
     @rentals.push(rental)
   end
 
-  def create_rentals(rental)
+  def create_rentals(_rental)
     rentals.each { |rental| puts "Date: #{rental.date}, Book: #{rental.book.title}, by #{rental.book.author}" }
   end
 
   def list_rentals(rental)
-    rental.each { |rental| puts "Date: #{ rental.date }, Book: #{ rental.book.title }, by #{ rental.book.author }"}
+    rental.each { |_rentals| puts "Date: #{rental.date}, Book: #{rental.book.title}, by #{rental.book.author}" }
   end
 end

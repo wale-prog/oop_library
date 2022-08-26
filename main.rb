@@ -1,8 +1,13 @@
+# frozen_string_literal: true
+
 require './App'
 
 APP = App.new
+# rubocop:disable Metrics/MethodLength
+# rubocop:disable Metrics/AbcSize
+# rubocop:disable Metrics/CyclomaticComplexity
 def menu
-  puts "Welcome to School Library App! \n\n"  
+  puts "Welcome to School Library App! \n\n"
   puts 'Please choose an option by entering a number:'
   puts '1 - List all books'
   puts '2 - List all people'
@@ -39,7 +44,6 @@ def main
     puts "Thank you for using this app \n"
     exit
   end
-
 end
 
 def list_books
@@ -49,25 +53,24 @@ end
 def create_people
   puts 'Do you want to create a student (1) or a teacher (2)? [Input the number]: '
   role = gets.chomp.to_i
-  puts 'Age:'
+  puts 'Age: '
   age = gets.chomp.to_i
-  puts 'Name:'
+  puts 'Name: '
   name = gets.chomp
-
   case role
   when 1
     role = 'student'
     puts 'Parents permission? [Y/N]: '
     parent_permission = gets.chomp.slice(0).capitalize
-    if parent_permission == "N"
+    case parent_permission
+    when 'N'
       parent_permission = false
-    elsif parent_permission == "Y"
+    when 'Y'
       parent_permission = true
     else
-      "Please enter a valid response"
+      'Please enter a valid response'
     end
     APP.create_people(role, age, name, parent_permission, nil)
-
   when 2
     role = 'teacher'
     puts 'Specialization: '
@@ -77,7 +80,7 @@ def create_people
     puts 'You have not entered a valid choice'
   end
   puts "Person created successfully \n"
-end  
+end
 
 def display_people
   APP.display_people
@@ -97,12 +100,10 @@ def create_rental
   APP.list_books_with_index
   book = gets.chomp.to_i
   puts 'Select a person from the following list by number(not id)'
-  APP.get_people
+  APP.list_people
   person = gets.chomp.to_i
-
   puts 'Date: '
   date = gets.chomp
-
   book = APP.books[book]
   person = APP.people[person]
   APP.create_rental(date, person, book)
@@ -113,13 +114,12 @@ def list_rentals
   puts 'ID of person: '
   id = gets.chomp.to_i
   filtered = APP.people.select { |person| id == person.id }.first
-  rental = filtered.rentals
 
-  if rental.nil?
-    puts "The entry does not exist"
+  if filtered.nil?
+    puts 'The entry with the given id does not exist'
   else
+    rental = filtered.rentals
     APP.list_rentals(rental)
   end
 end
-
-main()
+main
