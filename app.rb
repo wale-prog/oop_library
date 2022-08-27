@@ -68,7 +68,7 @@ class App
     rentals.each { |rental| puts "Date: #{rental.date}, Book: #{rental.book.title}, by #{rental.book.author}" }
   end
 
-  def list_rentals(rental)
+  def list_rental(rental)
     rental.each do |rental_event|
       puts "Date: #{rental_event.date}, Book: #{rental_event.book.title}, by #{rental_event.book.author}"
     end
